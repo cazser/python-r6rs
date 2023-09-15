@@ -5,7 +5,10 @@ class Value:
 
     def __init__(self, token):
         self.value = {}
-        if token[0]=='#':
+        if token=='':
+            self.value="Null"
+            self.type="Null"
+        elif token[0]=='#':
             self.type="Boolean"
             if token[1]=='t':
                 self.value = True
@@ -19,6 +22,7 @@ class Value:
             self.inside = token[1:-1]
         elif token[0]=='+':
             self.type="Add"
+            self.name="Add"
         else:
             self.type="Idenetifier"
 

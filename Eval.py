@@ -1,7 +1,20 @@
 from value import Value
 from tokenReader import tokenReader
-env = {"Add": ""}
+def doAdd(list):
+    #print("here")
+    value = Value("")
+    value.type = "Number"
+    cc = 0;
+    for it in list:
+        #print(it)
+        cc = cc+ it.value;
+    value.value = cc
+    return value
+
+env = {"Add": doAdd}
 class evaluate:
+    def __init__(self, env=env) -> None:
+        self.env=env
     def eval(self,value):
         if value.type=="Boolean":
             return value
@@ -9,7 +22,7 @@ class evaluate:
             return value
         elif value.type=='Expression':
             #print("Mark")
-            self.evalist(value.inside)
+            return self.evalist(value.inside)
     
     def evalist(self, list):
         token = tokenReader(list);
@@ -18,12 +31,11 @@ class evaluate:
         rest = []
         while not token.isEnd():
             rest.append(self.eval( Value(token.getNext())))
-        for it in rest:
-            print(it)
+        return self.env[first.name](rest)
 
 if __name__=='__main__':
     token2 = tokenReader("(+ 1 2)")
     value4 = Value(token2.getNext());
     #print(value4.type)
     eval1= evaluate();
-    eval1.eval(value4)
+    print(eval1.eval(value4))
