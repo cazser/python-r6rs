@@ -49,9 +49,12 @@ def doDiv(list):
     return value
 
 
+def doDefine(list):
+    
+    env[list[0].name] = list[1]
+    return list[1];
 
-
-env = {"Add": doAdd, "Sub": doSub, "Mult": doMult, "Div": doDiv}
+env = {"Add": doAdd, "Sub": doSub, "Mult": doMult, "Div": doDiv, "define": doDefine}
 class evaluate1:
     def __init__(self, env=env) -> None:
         self.env=env
@@ -68,7 +71,7 @@ class evaluate1:
         token = tokenReader(list);
         #print(token.getRest())
         first =  Value(token.getNext());
-        print(first)        
+        #print(first)        
         rest = []
         while not token.isEnd():
             rest.append(self.eval( Value(token.getNext())))
