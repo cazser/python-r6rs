@@ -4,15 +4,23 @@
 class Value:
 
     def __init__(self, token):
+        self.value = {}
         if token[0]=='#':
             self.type="Boolean"
             if token[1]=='t':
                 self.value = True
             elif token[1]=='f':
                 self.value = False
-        if token[0] in '0123456789':
+        elif token[0] in '0123456789':
             self.type = "Number"
             self.value = int(token)
-        if token[0]=='(':
+        elif token[0]=='(':
             self.type="Expression"
             self.inside = token[1:-1]
+        elif token[0]=='+':
+            self.type="Add"
+        else:
+            self.type="Idenetifier"
+
+    def __str__(self) -> str:
+        return "{"+ "type"+":"+ self.type+  "," +"value"+":" +str( self.value)+ "}" 
