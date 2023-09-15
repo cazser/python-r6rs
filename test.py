@@ -24,6 +24,10 @@ class TestValue(unittest.TestCase):
         self.assertEqual(value2.type,"Boolean");
         self.assertEqual(value2.value, False);
         self.assertEqual(token.isEnd(), True);
+        token1 = tokenReader("123");
+        value3 = Value(token1.getNext());
+        self.assertEqual(value3.type,"Number");
+        self.assertEqual(value3.value, 123);
 
 if __name__=="__main__":
     unittest.main()
