@@ -27,7 +27,7 @@ class tokenReader:
                 end = end+1;
             rest = self.str[self.start:end]
             self.start = end
-            return rest;
+            return rest.strip();
         
 
 
