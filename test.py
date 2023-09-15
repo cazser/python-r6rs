@@ -40,5 +40,13 @@ class TestEval(unittest.TestCase):
         value = Value(token.getNext())
         eval = evaluate1();
         self.assertEqual(eval.eval(value).value, 6)
+        token1 = tokenReader("(- 6 1 3)")
+        value1 = Value(token1.getNext())
+        eval1 = evaluate1();
+        self.assertEqual(eval1.eval(value1).value, 2)
+
+
+
 if __name__=="__main__":
+
     unittest.main()

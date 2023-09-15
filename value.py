@@ -23,6 +23,9 @@ class Value:
         elif token[0]=='+':
             self.type="Add"
             self.name="Add"
+        elif token[0]=='-':
+            self.type="Sub"
+            self.name="Sub"
         else:
             self.type="Idenetifier"
 

@@ -11,7 +11,22 @@ def doAdd(list):
     value.value = cc
     return value
 
-env = {"Add": doAdd}
+def doSub(list):
+    #print("here")
+    value = Value("")
+    value.type = "Number"
+    cc = list[0].value;
+    for i in range(1, len(list)):
+        #print(it)
+        it = list[i];
+        cc = cc- it.value;
+    value.value = cc
+    return value
+
+
+
+
+env = {"Add": doAdd, "Sub": doSub}
 class evaluate1:
     def __init__(self, env=env) -> None:
         self.env=env
