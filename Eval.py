@@ -68,6 +68,7 @@ class evaluate1:
         token = tokenReader(list);
         #print(token.getRest())
         first =  Value(token.getNext());
+        
         rest = []
         while not token.isEnd():
             rest.append(self.eval( Value(token.getNext())))

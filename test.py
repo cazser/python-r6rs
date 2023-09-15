@@ -48,9 +48,11 @@ class TestEval(unittest.TestCase):
         value2 = Value(token2.getNext())
         eval2 = evaluate1();
         self.assertEqual(eval2.eval(value2).value, 36)
-        token3 = tokenReader(r"(/ 24 2 3)")
-        value3 = Value( token3.getNext());
-        print(value3.inside)
+        token3 = tokenReader("(/ 24 2 3)")
+        t = token3.getNext();
+        #print(t);
+        value3 = Value( t );
+        self.assertEqual(eval1.eval(value3).value, 4);
         
 
 

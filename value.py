@@ -29,11 +29,11 @@ class Value:
         elif token[0]=='*':
             self.type="Mult"
             self.name="Mult"
-        elif type[0]=='/':
-            print("MMM")
+        elif token[0]=='/':
             self.type="Div"
             self.name="Div"
         else:
+            
             self.type="Idenetifier"
 
     def __str__(self) -> str:
