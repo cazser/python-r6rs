@@ -13,3 +13,6 @@ class Value:
         if token[0] in '0123456789':
             self.type = "Number"
             self.value = int(token)
+        if token[0]=='(':
+            self.type="Expression"
+            self.inside = token[1:-1]

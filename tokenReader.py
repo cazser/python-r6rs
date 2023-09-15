@@ -20,7 +20,7 @@ class tokenReader:
                     cursor=cursor-1
                 end = end+1
             rest = self.str[self.start:end]
-            while self.str[end]==' ' and end<len(self.str):
+            while end<len(self.str) and self.str[end]==' ' :
                 end = end+1
             self.start = end
             return rest

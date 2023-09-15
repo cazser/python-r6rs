@@ -28,6 +28,10 @@ class TestValue(unittest.TestCase):
         value3 = Value(token1.getNext());
         self.assertEqual(value3.type,"Number");
         self.assertEqual(value3.value, 123);
+        token2 = tokenReader("(+ 1 2)")
+        value4 = Value(token2.getNext());
+        self.assertEqual(value4.type, "Expression")
+        self.assertEqual(value4.inside, "+ 1 2")
 
 if __name__=="__main__":
     unittest.main()
