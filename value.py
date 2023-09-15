@@ -5,7 +5,7 @@ class Value:
 
     def __init__(self, token):
         self.value = {}
-        print(token)
+        #print(token)
         if token=='':
             self.value="Null"
             self.type="Null"

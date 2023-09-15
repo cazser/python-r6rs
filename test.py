@@ -69,14 +69,11 @@ class TestEval(unittest.TestCase):
 
 class TestIdentifier(unittest.TestCase):
     def testIdentifier(self):
-        token = tokenReader("(define a 5) a")
-        value = Value(token.getNext());
-        eval = evaluate1()
-        print(eval.eval(value))
-
-
-
-
+        token = tokenReader("define a")
+        value = Value(token.getNext())
+        print(value)
+        value = Value(token.getNext())
+        print(value)
 
 
 
