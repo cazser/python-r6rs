@@ -53,7 +53,14 @@ class TestEval(unittest.TestCase):
         #print(t);
         value3 = Value( t );
         self.assertEqual(eval1.eval(value3).value, 4);
+        token4 = tokenReader("(* (+ 1 2) (/ 24 2 3))")
+        t = token4.getNext();
+        #complex aritemetic
+        value4 = Value( t );
+        self.assertEqual(eval1.eval(value4).value, 12);
         
+
+
 
 
 
