@@ -23,10 +23,35 @@ def doSub(list):
     value.value = cc
     return value
 
+def doMult(list):
+    #print("here")
+    value = Value("")
+    value.type = "Number"
+    cc = 1;
+    for it in list:
+        #print(it)
+        cc = cc* it.value;
+    value.value = cc
+    return value
+    
+
+
+def doDiv(list):
+    #print("here")
+    value = Value("")
+    value.type = "Number"
+    cc = list[0].value;
+    for i in range(1, len(list)):
+        #print(it)
+        it = list[i];
+        cc = cc// it.value;
+    value.value = cc
+    return value
 
 
 
-env = {"Add": doAdd, "Sub": doSub}
+
+env = {"Add": doAdd, "Sub": doSub, "Mult": doMult, "Div": doDiv}
 class evaluate1:
     def __init__(self, env=env) -> None:
         self.env=env

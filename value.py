@@ -26,6 +26,13 @@ class Value:
         elif token[0]=='-':
             self.type="Sub"
             self.name="Sub"
+        elif token[0]=='*':
+            self.type="Mult"
+            self.name="Mult"
+        elif type[0]=='/':
+            print("MMM")
+            self.type="Div"
+            self.name="Div"
         else:
             self.type="Idenetifier"
 
