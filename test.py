@@ -2,7 +2,7 @@ import unittest
 
 from tokenReader import tokenReader
 from value import Value
-
+from Eval import evaluate1
 class TestToken(unittest.TestCase):
     def testBoolean(self):
         token = tokenReader("#t")
@@ -33,5 +33,12 @@ class TestValue(unittest.TestCase):
         self.assertEqual(value4.type, "Expression")
         self.assertEqual(value4.inside, "+ 1 2")
 
+ 
+class TestEval(unittest.TestCase):
+    def testEval(self):
+        token = tokenReader("(+ 1 2 3)")
+        value = Value(token.getNext())
+        eval = evaluate1();
+        self.assertEqual(eval.eval(value).value, 6)
 if __name__=="__main__":
     unittest.main()
