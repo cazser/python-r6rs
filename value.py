@@ -47,6 +47,4 @@ class Value:
     def __str__(self) -> str:
         if self.type=="Expression":
             return "(" + self.inside + ")"
-        if self.name:
-            return   "{"+"name"+":" +self.name+","+ "type"+":"+ self.type+  "," +"value"+":" +str( self.value)+ "}" 
         return "{"+ "type"+":"+ self.type+  "," +"value"+":" +str( self.value)+ "}" 

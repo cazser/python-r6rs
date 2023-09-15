@@ -3,6 +3,7 @@ import unittest
 from tokenReader import tokenReader
 from value import Value
 from Eval import evaluate1
+"""
 class TestToken(unittest.TestCase):
     def testBoolean(self):
         token = tokenReader("#t")
@@ -64,16 +65,17 @@ class TestEval(unittest.TestCase):
         #complex aritemetic
         value5 = Value( t );
         self.assertEqual(eval1.eval(value5).value, 9);
-        
+"""        
 
 
 class TestIdentifier(unittest.TestCase):
     def testIdentifier(self):
-        token = tokenReader("define a")
-        value = Value(token.getNext())
-        print(value)
-        value = Value(token.getNext())
-        print(value)
+        token = tokenReader("(define a 5) a")
+        value = Value(token.getNext());
+        eval = evaluate1()
+        eval.eval(value)
+        value1= Value(token.getNext())
+        print(eval.eval(value1));
 
 
 

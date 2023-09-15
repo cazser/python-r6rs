@@ -50,9 +50,9 @@ def doDiv(list):
 
 
 def doDefine(list):
-    
-    env[list[0].name] = list[1]
-    return list[1];
+    env[list[0]] = list[1]
+    print(list[0])
+    print(list[1])
 
 env = {"Add": doAdd, "Sub": doSub, "Mult": doMult, "Div": doDiv, "define": doDefine}
 class evaluate1:
@@ -66,15 +66,21 @@ class evaluate1:
         elif value.type=='Expression':
             #print("Mark")
             return self.evalist(value.inside)
-    
+        elif value.type=="Idenetifier":
+            print(self.env)
+            return env[value.name]
+        
     def evalist(self, list):
         token = tokenReader(list);
         #print(token.getRest())
         first =  Value(token.getNext());
-        #print(first)        
+        print(first)     
+           
         rest = []
         while not token.isEnd():
             rest.append(self.eval( Value(token.getNext())))
+        for it in rest:
+            print(it);
         return self.env[first.name](rest)
 
 if __name__=='__main__':
