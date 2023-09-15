@@ -12,7 +12,7 @@ def doAdd(list):
     return value
 
 env = {"Add": doAdd}
-class evaluate:
+class evaluate1:
     def __init__(self, env=env) -> None:
         self.env=env
     def eval(self,value):
