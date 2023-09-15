@@ -6,6 +6,8 @@ class tokenReader:
     def getRest(self):
         return self.str[self.start: ]
 
+    def isEnd(self):
+        return self.start>= len(self.str)
     def getNext(self):
         end = self.start
         if self.start<len(self.str) and self.str[self.start] =='(':

@@ -23,6 +23,7 @@ class TestValue(unittest.TestCase):
         value2 = Value(token.getNext());
         self.assertEqual(value2.type,"Boolean");
         self.assertEqual(value2.value, False);
+        self.assertEqual(token.isEnd(), True);
 
 if __name__=="__main__":
     unittest.main()

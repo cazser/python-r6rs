@@ -10,3 +10,6 @@ class Value:
                 self.value = True
             elif token[1]=='f':
                 self.value = False
+        if token[0] in '0123456789':
+            self.type = "Number"
+            self.value = int(token)
