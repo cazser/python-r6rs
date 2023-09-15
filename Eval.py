@@ -68,7 +68,7 @@ class evaluate1:
         token = tokenReader(list);
         #print(token.getRest())
         first =  Value(token.getNext());
-        
+        print(first)        
         rest = []
         while not token.isEnd():
             rest.append(self.eval( Value(token.getNext())))
@@ -78,5 +78,5 @@ if __name__=='__main__':
     token2 = tokenReader("(+ 1 2)")
     value4 = Value(token2.getNext());
     #print(value4.type)
-    eval1= evaluate();
+    eval1= evaluate1();
     print(eval1.eval(value4))

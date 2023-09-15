@@ -71,7 +71,8 @@ class TestIdentifier(unittest.TestCase):
     def testIdentifier(self):
         token = tokenReader("(define a 5) a")
         value = Value(token.getNext());
-        print(value)
+        eval = evaluate1()
+        print(eval.eval(value))
 
 
 
