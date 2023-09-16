@@ -49,6 +49,21 @@ class TestObject(unittest.TestCase):
         self.assertEqual("{'type': 'keyword', 'value': None, 'name': 'define'}", str(obj));
 
 
+class TestBasicEval(unittest.TestCase):
+     def testExpression(self):
+        token = tokenReader("(define a 11)")
+        #print(token.getNext())
+        exp1 = Expression(token.getNext())
+        value =  Value(exp1.getList())
+        objList = value.getList();
+        self.assertEqual("{'type': 'keyword', 'value': None, 'name': 'define'}", str(objList[0]));
+        self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
+        self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(objList[2]))
+        eval = evaluate1()
+        eval.eval(value)
+        env = eval.getEnv();
+        self.assertEqual(env["a"], 11)        
+ 
 
 if __name__=="__main__":
 
