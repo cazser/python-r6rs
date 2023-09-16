@@ -51,7 +51,7 @@ class TestObject(unittest.TestCase):
 
 class TestBasicEval(unittest.TestCase):
      def testExpression(self):
-        token = tokenReader("(define a 11)")
+        token = tokenReader("(define a 11) a")
         #print(token.getNext())
         exp1 = Expression(token.getNext())
         value =  Value(exp1.getList())
@@ -62,8 +62,12 @@ class TestBasicEval(unittest.TestCase):
         eval = evaluate1()
         eval.eval(value)
         env = eval.getEnv();
-        self.assertEqual(str(env["a"]), "{'type': 'Number', 'value': 11, 'name': ''}" )        
- 
+        self.assertEqual(str(env["a"]), "{'type': 'Number', 'value': 11, 'name': ''}" )
+        exp1 = Expression(token.getNext())        
+        value =  Value(exp1.getList())
+        str1 = str(eval.eval(value))
+        self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str1)
+
 
 if __name__=="__main__":
 

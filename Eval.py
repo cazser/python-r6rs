@@ -16,7 +16,11 @@ class evaluate1:
             if first.type=='keyword':
                 if first.name=='define':
                     self.__env__[rest[0].name] = rest[1]
-            
+                    return None
+        elif len(objList)==1:
+            first = objList[0]
+            if first.type=="Identifier":
+                return self.__env__[first.name]
     
     def getEnv(self):
         return self.__env__;
