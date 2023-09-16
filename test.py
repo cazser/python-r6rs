@@ -62,7 +62,7 @@ class TestBasicEval(unittest.TestCase):
         eval = evaluate1()
         eval.eval(value)
         env = eval.getEnv();
-        self.assertEqual(env["a"], 11)        
+        self.assertEqual(str(env["a"]), "{'type': 'Number', 'value': 11, 'name': ''}" )        
  
 
 if __name__=="__main__":
