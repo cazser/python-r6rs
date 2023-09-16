@@ -94,7 +94,9 @@ class TestAddEval(unittest.TestCase):
         self.assertEqual( "{'type': 'op', 'value': None, 'name': '+'}", str(objList[0]));
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
         self.assertEqual("{'type': 'Number', 'value': 5, 'name': ''}", str(objList[2]))
-        eval.eval(objList)        
+        result = eval.eval(objList)
+
+        self.assertEqual( "{'type': 'Number', 'value': 16, 'name': ''}", str(result))        
  
 
 

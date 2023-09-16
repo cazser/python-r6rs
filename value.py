@@ -11,19 +11,20 @@ class Object:
         self.type=None 
         self.value=None
         keywords=["define"]
-        if str in keywords:
-            self.type="keyword"
-            self.name = str
-        elif str=='+':
-            self.type="op"
-            self.name=str
-        elif str[0] in "0123456789":
-            self.type = "Number"
-            self.value = int(str)
-        else:
-            self.type="Identifier"
-            self.value=None
-            self.name = str 
+        if len(str)>0:
+            if str in keywords:
+                self.type="keyword"
+                self.name = str
+            elif str=='+':
+                self.type="op"
+                self.name=str
+            elif str[0] in "0123456789":
+                self.type = "Number"
+                self.value = int(str)
+            else:
+                self.type="Identifier"
+                self.value=None
+                self.name = str 
 
     def __str__(self) -> str:
         return str({"type": self.type, "value": self.value, "name": self.name})        
