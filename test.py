@@ -68,6 +68,34 @@ class TestBasicEval(unittest.TestCase):
         str1 = str(eval.eval(value))
         self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str1)
 
+class TestAddEval(unittest.TestCase):
+
+     def testExpression(self):
+        token = tokenReader("(define a 11)   (+ a 5)")
+        #print(token.getNext())
+        
+        exp1 = Expression(token.getNext())
+        value =  Value(exp1.getList())
+        objList = value.getList();
+
+        self.assertEqual("{'type': 'keyword', 'value': None, 'name': 'define'}", str(objList[0]));
+        self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
+        self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(objList[2]))
+        eval = evaluate1()
+        eval.eval(value)
+        #第一步：赋值
+
+        exp1 = Expression(token.getNext())
+        value =  Value(exp1.getList())
+        objList = value.getList();
+
+
+        self.assertEqual( "{'type': 'op', 'value': None, 'name': '+'}", str(objList[0]));
+        self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
+        self.assertEqual("{'type': 'Number', 'value': 5, 'name': ''}", str(objList[2]))
+        
+ 
+
 
 if __name__=="__main__":
 

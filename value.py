@@ -14,6 +14,9 @@ class Object:
         if str in keywords:
             self.type="keyword"
             self.name = str
+        elif str=='+':
+            self.type="op"
+            self.name=str
         elif str[0] in "0123456789":
             self.type = "Number"
             self.value = int(str)
