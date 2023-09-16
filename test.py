@@ -29,11 +29,20 @@ class TestExpression(unittest.TestCase):
         self.assertEqual(exp1.getType(), "Single")
         token1 = tokenReader("(+ 2 3 (+ 3 4 (- 9 7) (+ 100 100) ) )")
         exp2 = Expression(token1.getNext());
-        self.assertEqual("", str(exp2))
+        self.assertEqual("['+', '2', '3', ['+', '3', '4', ['-', '9', '7'], ['+', '100', '100']]]", str(exp2))
        
 
 
-
+class TestObject(unittest.TestCase):
+     def testExpression(self):
+        token = tokenReader("a 11")
+        #print(token.getNext())
+        exp1 = Expression(token.getNext())
+        obj = Value(exp1.getList()).getList()[0];
+        self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(obj))
+        exp1 = Expression(token.getNext())
+        obj = Value(exp1.getList()).getList()[0];
+        self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(obj));
 
 
 if __name__=="__main__":
