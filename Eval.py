@@ -22,7 +22,27 @@ def doAdd(recvlist, env):
     return obj
 
 
-native_env={"+": doAdd};
+def doSub(recvlist, env):
+    list1=[]
+    for it in recvlist:
+        if isinstance(it, list):
+            eval= evaluate1(env)
+            list1.append(eval.eval(it))
+        else:
+            innerlist=[it]
+            eval= evaluate1(env)
+            list1.append(eval.eval(innerlist))
+    obj = list1[0]
+
+    
+    for index in range(1, len(list1)):
+        item = list1[index]
+        obj.value = obj.value - item.value
+    return obj
+
+   
+
+native_env={"+": doAdd, "-": doSub};
 
 
 
@@ -42,6 +62,8 @@ class evaluate1:
                     return None
             elif first.type=='op':
                 if first.name=='+':
+                    return self.__env__[first.name](rest, self.getEnv())
+                if first.name=='-':
                     return self.__env__[first.name](rest, self.getEnv())
                 
         elif len(objList)==1:

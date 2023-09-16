@@ -116,7 +116,6 @@ class TestSubEval(unittest.TestCase):
         value =  Value(exp1.getList())
         objList = value.getList();
 
-        eval = evaluate1()
         eval.eval(objList)
        
         #第一步：赋值
@@ -130,7 +129,9 @@ class TestSubEval(unittest.TestCase):
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'b'}", str(objList[2]))
 
-
+        result= eval.eval(objList)
+        self.assertEqual( "{'type': 'Number', 'value': -4, 'name': ''}", str(result))
+ 
 
 if __name__=="__main__":
 
