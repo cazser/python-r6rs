@@ -144,5 +144,21 @@ class TestNegatvieNumber(unittest.TestCase):
         self.assertEqual(str(objList[0]),  "{'type': 'Number', 'value': -11, 'name': ''}");
         
 
+class TestDefineFunction(unittest.TestCase):
+    def testExpression(self):
+        token_reader = tokenReader("(define (f x) (+ x 2))")
+        token = token_reader.getNext();
+        self.assertEqual(token, "(define (f x) (+ x 2))" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        for it in objList:
+            if isinstance(it, list):
+                for item in it:
+                    print("..."+ str(item))
+            else:
+                print(it)
+
+
 if __name__=="__main__":
     unittest.main()
