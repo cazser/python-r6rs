@@ -60,12 +60,12 @@ class TestBasicEval(unittest.TestCase):
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
         self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(objList[2]))
         eval = evaluate1()
-        eval.eval(value)
+        eval.eval(objList)
         env = eval.getEnv();
         self.assertEqual(str(env["a"]), "{'type': 'Number', 'value': 11, 'name': ''}" )
         exp1 = Expression(token.getNext())        
         value =  Value(exp1.getList())
-        str1 = str(eval.eval(value))
+        str1 = str(eval.eval(value.getList()))
         self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str1)
 
 class TestAddEval(unittest.TestCase):
@@ -82,7 +82,8 @@ class TestAddEval(unittest.TestCase):
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
         self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(objList[2]))
         eval = evaluate1()
-        eval.eval(value)
+        eval.eval(objList)
+        
         #第一步：赋值
 
         exp1 = Expression(token.getNext())
@@ -93,7 +94,7 @@ class TestAddEval(unittest.TestCase):
         self.assertEqual( "{'type': 'op', 'value': None, 'name': '+'}", str(objList[0]));
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'a'}", str(objList[1]))
         self.assertEqual("{'type': 'Number', 'value': 5, 'name': ''}", str(objList[2]))
-        
+        eval.eval(objList)        
  
 
 
