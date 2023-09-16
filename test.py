@@ -133,6 +133,12 @@ class TestSubEval(unittest.TestCase):
         self.assertEqual( "{'type': 'Number', 'value': -4, 'name': ''}", str(result))
  
 
-if __name__=="__main__":
+class TestNegatvieNumber(unittest.TestCase):
+     def testExpression(self):
+        token_reader = tokenReader("-11")
+        token = token_reader.getNext()
+        self.assertEqual("-11", token)
+        
 
+if __name__=="__main__":
     unittest.main()
