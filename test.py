@@ -15,14 +15,17 @@ class TestToken(unittest.TestCase):
         self.assertEqual(token.getNext(), "(+ a 1)")
         self.assertEqual(token.getNext(), "11")
 
-class TestValue(unittest.TestCase):
-    def testValue(self):
+class TestExpression(unittest.TestCase):
+    def testExpression(self):
         token = tokenReader("(+ a 1) 11 ")
         #print(token.getNext())
         exp1 = Expression(token.getNext())
         self.assertEqual(exp1.getCode(), "(+ a 1)")
+        self.assertEqual(exp1.getType(), "Compose")
+        self.assertEqual(exp1.getInside(), "+ a 1")
         exp1 = Expression(token.getNext())
         self.assertEqual(exp1.getCode(), "11")
+        self.assertEqual(exp1.getType(), "Single")
 
        
 
