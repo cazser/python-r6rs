@@ -35,7 +35,7 @@ class TestExpression(unittest.TestCase):
 
 class TestObject(unittest.TestCase):
      def testExpression(self):
-        token = tokenReader("a 11")
+        token = tokenReader("a 11 define")
         #print(token.getNext())
         exp1 = Expression(token.getNext())
         obj = Value(exp1.getList()).getList()[0];
@@ -43,6 +43,11 @@ class TestObject(unittest.TestCase):
         exp1 = Expression(token.getNext())
         obj = Value(exp1.getList()).getList()[0];
         self.assertEqual("{'type': 'Number', 'value': 11, 'name': ''}", str(obj));
+
+        exp1 = Expression(token.getNext())
+        obj = Value(exp1.getList()).getList()[0];
+        self.assertEqual("{'type': 'keyword', 'value': None, 'name': 'define'}", str(obj));
+
 
 
 if __name__=="__main__":

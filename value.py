@@ -10,7 +10,11 @@ class Object:
         self.name=""
         self.type=None 
         self.value=None
-        if str[0] in "0123456789":
+        keywords=["define"]
+        if str in keywords:
+            self.type="keyword"
+            self.name = str
+        elif str[0] in "0123456789":
             self.type = "Number"
             self.value = int(str)
         else:
