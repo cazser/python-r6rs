@@ -152,12 +152,10 @@ class TestDefineFunction(unittest.TestCase):
         exp = Expression(token)
         value = Value(exp.getList())
         objList= value.getList()
-        for it in objList:
-            if isinstance(it, list):
-                for item in it:
-                    print("..."+ str(item))
-            else:
-                print(it)
+        eval = evaluate1()
+        eval.eval(objList)
+        env = eval.getEnv()
+        print(env)
 
 
 if __name__=="__main__":
