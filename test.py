@@ -138,6 +138,10 @@ class TestNegatvieNumber(unittest.TestCase):
         token_reader = tokenReader("-11")
         token = token_reader.getNext()
         self.assertEqual("-11", token)
+        exp1 = Expression(token)
+        value =  Value(exp1.getList())
+        objList = value.getList();
+        self.assertEqual(str(objList[0]),  "{'type': 'Number', 'value': -11, 'name': ''}");
         
 
 if __name__=="__main__":
