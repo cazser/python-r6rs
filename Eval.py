@@ -28,6 +28,8 @@ def doSub(recvlist, env):
         if isinstance(it, list):
             eval= evaluate1(env)
             list1.append(eval.eval(it))
+            for item in list1:
+                print(item)
         else:
             innerlist=[it]
             eval= evaluate1(env)
@@ -76,11 +78,24 @@ class evaluate1:
             elif first.type=='op':
                 if first.name=='+':
                     return self.__env__[first.name](rest, self.getEnv())
-                if first.name=='-':
+                elif first.name=='-':
+                    
                     return self.__env__[first.name](rest, self.getEnv())
-            elif self.__env__[first.name]["type"]=='procedure':
+                
+            elif "type" in self.__env__[first.name] and self.__env__[first.name]["type"]=='procedure':
                 #函数调用
-                pass
+                env = self.getEnv()
+                stack=self.getStack()
+                last={}
+                arguments = env[first.name]["arguments"]
+                for index in range(len(arguments)):
+                    last[arguments[index].name] = rest[index]
+                #print(last[arguments[0].name])
+                stack.append(last)
+                inner_evaluate = evaluate1(env, stack)
+                result= inner_evaluate.eval(env[first.name]["body"])
+                inner_evaluate.getStack().pop()
+                return result
                 
         elif len(objList)==1:
             first = objList[0]

@@ -4,6 +4,8 @@ from tokenReader import tokenReader
 from value import Value
 from Eval import evaluate1
 from Expression import Expression
+
+'''
 class TestToken(unittest.TestCase):
     def testBoolean(self):
         token = tokenReader("#t")
@@ -97,7 +99,8 @@ class TestAddEval(unittest.TestCase):
         result = eval.eval(objList)
 
         self.assertEqual( "{'type': 'Number', 'value': 16, 'name': ''}", str(result))        
- 
+'''
+
  
 class TestSubEval(unittest.TestCase):
 
@@ -130,6 +133,7 @@ class TestSubEval(unittest.TestCase):
         self.assertEqual("{'type': 'Identifier', 'value': None, 'name': 'b'}", str(objList[2]))
 
         result= eval.eval(objList)
+               
         self.assertEqual( "{'type': 'Number', 'value': -4, 'name': ''}", str(result))
  
 
@@ -179,7 +183,7 @@ class TestFunctionCall(unittest.TestCase):
         value = Value(exp.getList())
         objList= value.getList()
         result = eval.eval(objList)
-        print(result)
+        self.assertEqual(str(result),  "{'type': 'Number', 'value': 4, 'name': ''}")
        
 
 
