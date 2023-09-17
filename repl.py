@@ -17,8 +17,8 @@ def repl():
             #print(t)
             exp = Expression(t)            
             value = Value(exp.getList())
-            #for it in value.getList():
-            #    print(it)
+            for it in value.getList():
+                print(it)
             result= eval.eval(value.getList())
             if not result== None:
                 print(result.value)

@@ -51,7 +51,7 @@ def doDefine(objList, env):
         procdure= item1[0]
         arguments = item1[1:]
         body = item2 
-        env[procdure.name] = {"arguments": arguments, "body": body, "type": "procedure"}
+        env[procdure.name] = {"arguments": arguments, "body": body, "kind": "procedure", "type":"Identifier"}
         
     else:
         env[item1.name] = item2
@@ -82,7 +82,7 @@ class evaluate1:
                     
                     return self.__env__[first.name](rest, self.getEnv())
                 
-            elif "type" in self.__env__[first.name] and self.__env__[first.name]["type"]=='procedure':
+            elif "type" in self.__env__[first.name] and self.__env__[first.name]["kind"]=='procedure':
                 #函数调用
                 env = self.getEnv()
                 stack=self.getStack()
