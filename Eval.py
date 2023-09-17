@@ -96,14 +96,12 @@ class evaluate1:
                 for index in range(len(arguments)):
                     #rest里是实参
                     if rest[index].type=="Identifier":
-                        for l in range(len(stack)):
-                            if rest[index].name in stack[-1 - l]:
-                                last[arguments[index].name] = stack[-1-l][rest[index].name]
-                                break
-                        if rest[index].name in env:
-                            print(env[rest[index].name])
-                            last[arguments[index].name]= env[rest[index].name]
-                        print(rest[index].name)
+                        for index1 in range(len(stack)):
+                            for key, val in stack[-1-index1].items():
+                                print(key)
+                    for key, val in env.items():
+                        print(key)
+                        print(key == rest[index]['name'])
                     else:
                         last[arguments[index].name] = rest[index]
                 #print(last[arguments[0].name])
