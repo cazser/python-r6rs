@@ -51,7 +51,10 @@ def doDefine(objList, env):
         procdure= item1[0]
         arguments = item1[1:]
         body = item2 
-        env[procdure.name] = {"arguments": arguments, "body": body, "kind": "procedure", "type":"Identifier"}
+        env[procdure.name] = {"value":{"arguments": arguments, "body": body,}, 
+                              "kind": "procedure", 
+                              "type":"Identifier"
+                              }
         
     else:
         env[item1.name] = item2
@@ -87,7 +90,7 @@ class evaluate1:
                 env = self.getEnv()
                 stack=self.getStack()
                 last={}
-                arguments = env[first.name]["arguments"]
+                arguments = env[first.name]["value"]["arguments"]
                 for index in range(len(arguments)):
                     #rest里是实参
                     if rest[index].type=="Identifier":
@@ -102,7 +105,7 @@ class evaluate1:
                 #print(last[arguments[0].name])
                 stack.append(last)
                 inner_evaluate = evaluate1(env, stack)
-                result= inner_evaluate.eval(env[first.name]["body"])
+                result= inner_evaluate.eval(env[first.name]["value"]["body"])
                 inner_evaluate.getStack().pop()
                 return result
                 

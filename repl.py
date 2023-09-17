@@ -21,7 +21,10 @@ def repl():
                 print(it)
             result= eval.eval(value.getList())
             if not result== None:
-                print(result.value)
+                if isinstance(result, dict):
+                    print(result["value"])
+                else:
+                    print(result.value)
             index= index+1
     print("thanks")
 
