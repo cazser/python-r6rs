@@ -89,7 +89,16 @@ class evaluate1:
                 last={}
                 arguments = env[first.name]["arguments"]
                 for index in range(len(arguments)):
-                    last[arguments[index].name] = rest[index]
+                    #rest里是实参
+                    if rest[index].type=="Identifier":
+                        for l in range(len(stack)):
+                            if rest[index].name in stack[-1 - l]:
+                                last[arguments[index].name] = stack[-1-l][rest[index].name]
+                                break
+                        if rest[index].name in env:
+                            last[arguments[index].name]= env[rest[index].name]
+                    else:
+                        last[arguments[index].name] = rest[index]
                 #print(last[arguments[0].name])
                 stack.append(last)
                 inner_evaluate = evaluate1(env, stack)
