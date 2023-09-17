@@ -160,6 +160,28 @@ class TestDefineFunction(unittest.TestCase):
         arguments = env[fn.name]['arguments']
         self.assertEqual(str(arguments[0]) ,"{'type': 'Identifier', 'value': None, 'name': 'x'}")
        
+class TestFunctionCall(unittest.TestCase):
+    def testExpression(self):
+        token_reader = tokenReader("(define (f x) (+ x 2)) (f 2)")
+        token = token_reader.getNext();
+        self.assertEqual(token, "(define (f x) (+ x 2))" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        fn = objList[1][0]
+        #print(fn)
+        eval = evaluate1()
+        eval.eval(objList)
+        env = eval.getEnv()
+        token = token_reader.getNext();
+        self.assertEqual(token, "(f 2)" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        result = eval.eval(objList)
+        print(result)
+       
+
 
 
 if __name__=="__main__":
