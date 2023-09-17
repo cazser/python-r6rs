@@ -53,7 +53,8 @@ def doDefine(objList, env):
         body = item2 
         env[procdure.name] = {"value":{"arguments": arguments, "body": body,}, 
                               "kind": "procedure", 
-                              "type":"Identifier"
+                              "type":"Identifier",
+                              "name": procdure.name
                               }
         
     else:
@@ -99,6 +100,7 @@ class evaluate1:
                                 last[arguments[index].name] = stack[-1-l][rest[index].name]
                                 break
                         if rest[index].name in env:
+                            print(env[rest[index].name])
                             last[arguments[index].name]= env[rest[index].name]
                     else:
                         last[arguments[index].name] = rest[index]

@@ -17,9 +17,12 @@ def repl():
             #print(t)
             exp = Expression(t)            
             value = Value(exp.getList())
-            for it in value.getList():
-                print(it)
+            
             result= eval.eval(value.getList())
+            env = eval.getEnv()
+            #for key, v in env.items():
+            #    print(key, v)
+
             if not result== None:
                 if isinstance(result, dict):
                     print(result["value"])

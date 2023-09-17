@@ -161,7 +161,7 @@ class TestDefineFunction(unittest.TestCase):
         eval = evaluate1()
         eval.eval(objList)
         env = eval.getEnv()
-        arguments = env[fn.name]['arguments']
+        arguments = env[fn.name]['value']['arguments']
         self.assertEqual(str(arguments[0]) ,"{'type': 'Identifier', 'value': None, 'name': 'x'}")
        
 class TestFunctionCall(unittest.TestCase):
