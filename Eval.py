@@ -59,7 +59,7 @@ native_env={"+": doAdd, "-": doSub, "define": doDefine};
 
 
 class evaluate1:
-    def __init__(self, env=native_env) -> None:
+    def __init__(self, env=native_env, stack=[]) -> None:
         self.__env__ = native_env
         
 
@@ -77,6 +77,8 @@ class evaluate1:
                     return self.__env__[first.name](rest, self.getEnv())
                 if first.name=='-':
                     return self.__env__[first.name](rest, self.getEnv())
+            elif self.__env__[first.name]["type"]=='procedure':
+                print("函数调用")
                 
         elif len(objList)==1:
             first = objList[0]
