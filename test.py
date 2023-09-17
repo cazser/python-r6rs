@@ -100,7 +100,7 @@ class TestAddEval(unittest.TestCase):
 
         self.assertEqual( "{'type': 'Number', 'value': 16, 'name': ''}", str(result))        
 '''
-
+'''
  
 class TestSubEval(unittest.TestCase):
 
@@ -184,9 +184,49 @@ class TestFunctionCall(unittest.TestCase):
         objList= value.getList()
         result = eval.eval(objList)
         self.assertEqual(str(result),  "{'type': 'Number', 'value': 4, 'name': ''}")
-       
+'''       
 
+class TestFunctionAsArgument(unittest.TestCase):
+    def testExpression(self):
+        token_reader = tokenReader("(define (f x) (+ x 2)) (define (g v) (v 2)) (define a 12) f (g f)")
+        token = token_reader.getNext();
+        #self.assertEqual(token, "(define (f x) (+ x 2))" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        eval = evaluate1()
+        eval.eval(objList)
 
+        token = token_reader.getNext();
+        self.assertEqual(token, "(define (g v) (v 2))" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        eval.eval(objList)
+
+        token = token_reader.getNext();
+        self.assertEqual(token, "(define a 12)" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        eval.eval(objList)
+        
+        env = eval.getEnv()
+
+        token = token_reader.getNext();
+        self.assertEqual(token, "f" )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        result=eval.eval(objList)
+    
+        token = token_reader.getNext();
+        self.assertEqual(token, '(g f)' )
+        exp = Expression(token)
+        value = Value(exp.getList())
+        objList= value.getList()
+        result=eval.eval(objList)
+ 
 
 if __name__=="__main__":
     unittest.main()

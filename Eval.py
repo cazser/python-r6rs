@@ -53,7 +53,7 @@ def doDefine(objList, env):
         body = item2 
         env[procdure.name] = {"value":{"arguments": arguments, "body": body,}, 
                               "kind": "procedure", 
-                              "type":"Identifier",
+                              "type":"Procedure",
                               "name": procdure.name
                               }
         
@@ -72,6 +72,7 @@ class evaluate1:
 
     def eval(self,objList:list[Object]):
         #objList = value.getList();
+       
         if len(objList)>1:
             first = objList[0];
             rest = objList[1:];
@@ -102,6 +103,7 @@ class evaluate1:
                         if rest[index].name in env:
                             print(env[rest[index].name])
                             last[arguments[index].name]= env[rest[index].name]
+                        print(rest[index].name)
                     else:
                         last[arguments[index].name] = rest[index]
                 #print(last[arguments[0].name])
