@@ -40,9 +40,12 @@ def doSub(recvlist, env):
         obj.value = obj.value - item.value
     return obj
 
-   
 
-native_env={"+": doAdd, "-": doSub};
+
+def doDefine(objList, env):
+    pass
+
+native_env={"+": doAdd, "-": doSub, "define": doDefine};
 
 
 
@@ -58,7 +61,7 @@ class evaluate1:
             rest = objList[1:];
             if first.type=='keyword':
                 if first.name=='define':
-                    self.__env__[rest[0].name] = rest[1]
+                    self.__env__["define"](rest, self.getEnv())
                     return None
             elif first.type=='op':
                 if first.name=='+':

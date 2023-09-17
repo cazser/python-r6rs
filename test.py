@@ -154,8 +154,7 @@ class TestDefineFunction(unittest.TestCase):
         objList= value.getList()
         eval = evaluate1()
         eval.eval(objList)
-        env = eval.getEnv()
-        print(env)
+       
 
 
 if __name__=="__main__":
