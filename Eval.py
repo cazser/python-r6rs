@@ -61,6 +61,7 @@ native_env={"+": doAdd, "-": doSub, "define": doDefine};
 class evaluate1:
     def __init__(self, env=native_env, stack=[]) -> None:
         self.__env__ = native_env
+        self.stack = stack
         
 
     def eval(self,objList:list[Object]):
@@ -78,17 +79,29 @@ class evaluate1:
                 if first.name=='-':
                     return self.__env__[first.name](rest, self.getEnv())
             elif self.__env__[first.name]["type"]=='procedure':
-                print("函数调用")
+                #函数调用
+                pass
                 
         elif len(objList)==1:
             first = objList[0]
             if first.type=="Identifier":
-                return self.__env__[first.name]
+                if len(self.stack)>0:
+                    last = self.stack[-1]
+                    if first.name in last:
+                        return last[first.name]
+                elif  first.name in self.__env__:
+                    return self.__env__[first.name]
+                else:
+                    return None
             if first.type=="Number":
                 return first
             
     def getEnv(self):
         return self.__env__;
+    
+    def getStack(self):
+        return self.stack
+    
 
 if __name__=='__main__':
     pass
