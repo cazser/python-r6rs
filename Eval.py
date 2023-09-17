@@ -43,7 +43,16 @@ def doSub(recvlist, env):
 
 
 def doDefine(objList, env):
-    pass
+    item1 = objList[0]
+    item2 = objList[1]
+    if isinstance(item1, list):
+        procdure= item1[0]
+        arguments = item1[1:]
+        body = item2 
+        env[procdure.name] = {"arguments": arguments, "body": body, "type": "procedure"}
+        
+    else:
+        env[item1.name] = item2
 
 native_env={"+": doAdd, "-": doSub, "define": doDefine};
 

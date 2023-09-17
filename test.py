@@ -152,8 +152,13 @@ class TestDefineFunction(unittest.TestCase):
         exp = Expression(token)
         value = Value(exp.getList())
         objList= value.getList()
+        fn = objList[1][0]
+        #print(fn)
         eval = evaluate1()
         eval.eval(objList)
+        env = eval.getEnv()
+        arguments = env[fn.name]['arguments']
+        self.assertEqual(str(arguments[0]) ,"{'type': 'Identifier', 'value': None, 'name': 'x'}")
        
 
 
