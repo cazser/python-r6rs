@@ -186,9 +186,18 @@ class evaluate1:
 
 
     def backToCode(self, objList:list[Object]):
-        out =""
-        queue = []
-        return out
+        out =[]       #queue = []
+        def dfs(objList, out):
+            if not isinstance(objList, list):
+                out = out.append( objList.str)
+            else:
+                out.append("(")
+                for it in objList:
+                    dfs(it, out)
+                out.append( ")")
+            
+        dfs(objList, out)
+        return " ".join(out)
 
     def eval(self, objList: list[Object]):
         """
