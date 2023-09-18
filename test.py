@@ -11,6 +11,9 @@ class TestBasicValue(unittest.TestCase):
         value = Value(Expression(token_reader.getNext()).getList())
         eval = evaluate1()
         eval.eval(value.getList())
+        stack = eval.getStack()
+        for it in stack:
+            print(it)
 
 if __name__=="__main__":
     unittest.main()

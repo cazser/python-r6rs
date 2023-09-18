@@ -2,6 +2,7 @@
 
 
 import string
+from typing import Any
 
 
 class Object:
@@ -36,8 +37,17 @@ class Object:
             else:
                 self.type="Identifier"
                 self.value=None
-                self.name = str 
+                self.name = str
+    
+    def __getitem__(self, __name: str) -> Any:
+        if __name=="type":
+            return self.type
+        elif __name=="value":
+            return self.value
+        elif __name=="name":
+            return self.name 
 
+    
     def __str__(self) -> str:
         return str({"type": self.type, "value": self.value, "name": self.name})        
         
