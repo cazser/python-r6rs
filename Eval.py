@@ -12,6 +12,9 @@ class evaluate1:
         self.__stack__ = stack
         self.op={
             "+":self.doAdd,
+            "-": self.doSub,
+            "*": self.doMult,
+            "/": self.doDiv
         }
 
     def doAdd(self, recvList):
@@ -29,6 +32,58 @@ class evaluate1:
         for it in list1:
             obj.value = obj.value + it.value
         return obj
+    
+    def doSub(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            if isinstance(it, list):
+                list1.append(eval1.eval(it))
+            else:
+                list1.append(eval1.eval([it]))
+
+        obj = list1[0]
+        for index in range(1, len(list1)):
+            it = list1[index]
+            obj.value = obj.value - it.value
+        return obj
+    
+    def doMult(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            if isinstance(it, list):
+                list1.append(eval1.eval(it))
+            else:
+                list1.append(eval1.eval([it]))
+
+        obj = list1[0]
+        for index in range(1, len(list1)):
+            it = list1[index]
+            obj.value = obj.value * it.value
+        return obj
+ 
+    def doDiv(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            if isinstance(it, list):
+                list1.append(eval1.eval(it))
+            else:
+                list1.append(eval1.eval([it]))
+
+        obj = list1[0]
+        for index in range(1, len(list1)):
+            it = list1[index]
+            obj.value = obj.value // it.value
+        return obj
+        
 
     def eval(self, objList: list[Object]):
         """
