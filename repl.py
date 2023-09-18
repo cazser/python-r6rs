@@ -19,7 +19,7 @@ def repl():
             value = Value(exp.getList())
             
             result= eval.eval(value.getList())
-            env = eval.getEnv()
+            env = eval.getStack()
             #for key, v in env.items():
             #    print(key, v)
 
