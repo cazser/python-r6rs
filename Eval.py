@@ -17,8 +17,75 @@ class evaluate1:
             "*": self.doMult,
             "/": self.doDiv,
             "<": self.doLt,
-            ">": self.doGt
+            ">": self.doGt,
+            "=": self.doEq,
+            "and": self.doAnd,
+            "or":  self.doOr,
+            "not": self.doNot,
         }
+    
+    def doNot(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            if isinstance(it, list):
+                list1.append(eval1.eval(it))
+            else:
+                list1.append(eval1.eval([it]))
+        if list1[0].value==True:
+            return FalseValue
+        else:
+            return TrueValue
+    
+    
+    def doOr(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            t=None
+            if isinstance(it, list):
+                t =eval1.eval(it)
+            else:
+                t=eval1.eval([it])
+            if t.value==True:
+                return TrueValue
+        return FalseValue
+    
+    def doAnd(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            t=None
+            if isinstance(it, list):
+                t =eval1.eval(it)
+            else:
+                t=eval1.eval([it])
+            if t.value==False:
+                return FalseValue
+        return TrueValue
+ 
+    
+    def doEq(self, recvList):
+        eval1 = evaluate1(self.__stack__)
+        #for it in recvList:
+        #    print(it)
+        list1=[]
+        for it in recvList:
+            if isinstance(it, list):
+                list1.append(eval1.eval(it))
+            else:
+                list1.append(eval1.eval([it]))
+        if list1[0].value == list1[1].value:
+            return 
+        else:
+            return FalseValue
+
 
     def doAdd(self, recvList):
         eval1 = evaluate1(self.__stack__)

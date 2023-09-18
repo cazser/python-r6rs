@@ -16,23 +16,8 @@ class Object:
             if str in keywords:
                 self.type="keyword"
                 self.name = str
-            elif str=='+':
+            elif str in ['+', '-', '*', '/', '<', ">", "=", "and", "or", "not"]:
                 self.type="op"
-                self.name=str
-            elif str=='-':
-                self.type="op"
-                self.name=str
-            elif str=='*':
-                self.type="op"
-                self.name=str
-            elif str=='/':
-                self.type="op"
-                self.name=str
-            elif str=='<':
-                self.type="op"
-                self.name=str 
-            elif str=='>':
-                self.type='op'
                 self.name=str
             elif  str[0]=='-' and str[1] in '0123456789':
                 self.type = "Number"
