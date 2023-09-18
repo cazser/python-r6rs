@@ -28,12 +28,24 @@ class Object:
             elif str=='/':
                 self.type="op"
                 self.name=str
+            elif str=='<':
+                self.type="op"
+                self.name=str 
+            elif str=='>':
+                self.type='op'
+                self.name=str
             elif  str[0]=='-' and str[1] in '0123456789':
                 self.type = "Number"
                 self.value = int(str)
             elif str[0] in "0123456789":
                 self.type = "Number"
                 self.value = int(str)
+            elif str=='#t' or str=='#f':
+                self.type="Boolean"
+                if str=='#t':
+                    self.value =True 
+                else:
+                    self.value = False
             else:
                 self.type="Identifier"
                 self.value=None
