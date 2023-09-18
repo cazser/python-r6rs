@@ -11,6 +11,7 @@ class Object:
         self.name=""
         self.type=None 
         self.value=None
+        self.str=str 
         keywords=["define"]
         if len(str)>0:
             if str in keywords:
@@ -42,11 +43,13 @@ class Object:
         elif __name=="value":
             return self.value
         elif __name=="name":
-            return self.name 
+            return self.name
+        elif __name=="str":
+            return self.str 
 
     
     def __str__(self) -> str:
-        return str({"type": self.type, "value": self.value, "name": self.name})        
+        return str({"type": self.type, "value": self.value, "name": self.name, "str": self.str})        
         
 
 class Value:

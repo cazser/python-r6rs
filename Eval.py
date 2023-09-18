@@ -185,8 +185,10 @@ class evaluate1:
             return FalseValue
 
 
-
-        
+    def backToCode(self, objList:list[Object]):
+        out =""
+        queue = []
+        return out
 
     def eval(self, objList: list[Object]):
         """
