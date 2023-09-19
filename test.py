@@ -23,8 +23,28 @@ class TestBackToCode(unittest.TestCase):
         value = Value(Expression(token_reader.getNext()).getList())
         eval = evaluate1()
         objList= value.getList()
-        print(eval.backToCode(objList))
+        self.assertEqual( eval.backToCode(objList), "( + 1 ( * 2 3 4 ) ( * 9 0 ) )" )
+    
 
+class TestLetStruct(unittest.TestCase):
+    def testLetStruct(self):
+        token_reader = tokenReader("(let ((x 5) (y 7)) (+ x y))")
+        token = token_reader.getNext()
+        exp = Expression(token)
+        value = Value(exp.getList())
+        """
+        for it in value.getList():
+            if isinstance(it, list):
+                for item in it:
+                    if isinstance(item, list):
+                        for cc in item:
+                            print("---...", cc)
+                    else:
+                        print("---" , item)
+            else:
+                print(it)
+        """
+        
        
 if __name__=="__main__":
     unittest.main()
