@@ -204,7 +204,11 @@ class evaluate1:
         stack = self.getStack()
         stack.append({})
         for it in variables:
-            stack[-1][it[0]["name"]] = it[1]
+            if isinstance(it[1], list):
+                stack[-1][it[0]["name"]] = self.eval(it[1])
+            else:
+                stack[-1][it[0]["name"]] = self.eval([it[1]])
+
         eval1 = evaluate1(stack)
 
         result = eval1.eval(codes)

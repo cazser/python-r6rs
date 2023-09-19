@@ -5,17 +5,6 @@ from value import Value
 from Eval import evaluate1
 from Expression import Expression
 
-class TestBasicValue(unittest.TestCase):
-    def testNumber(self):
-        token_reader = tokenReader("(define a 5) a")
-        value = Value(Expression(token_reader.getNext()).getList())
-        eval = evaluate1()
-        eval.eval(value.getList())
-        #stack = eval.getStack()
-        value = Value(Expression(token_reader.getNext()).getList())
-        result =eval.eval(value.getList())
-        #print(result)
-
 
 class TestBackToCode(unittest.TestCase):
     def testBackToCode(self):
@@ -46,6 +35,32 @@ class TestLetStruct(unittest.TestCase):
             else:
                 print(it)
         """
+    
+    def testAdd(self):
+        token_reader = tokenReader("(define a 18) (define b 16) (+ a b)")
+        token = token_reader.getNext()
+        exp = Expression(token)
+        value = Value(exp.getList())
+        eval = evaluate1()
+        eval.eval(value.getList())
+
+        token = token_reader.getNext()
+        exp = Expression(token)
+        value = Value(exp.getList())
+        
+        eval.eval(value.getList())
+
+        token = token_reader.getNext()
+        exp = Expression(token)
+        value = Value(exp.getList())
+        
+        print(eval.eval(value.getList()))
+
+
+        
+        
+
+
 
        
 if __name__=="__main__":
