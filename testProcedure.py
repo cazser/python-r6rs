@@ -22,7 +22,7 @@ class TestProcedureDefine(unittest.TestCase):
         #self.assertEqual(token, "(define a 5)")
 
     def testProcedureCall(self):
-        token_reader = tokenReader("(define (f x) (+ x 2)) (f 8)")
+        token_reader = tokenReader("(define (f x) (+ x 2)) (define a 5) a (f 8)")
         token = token_reader.getNext()
         self.assertEqual(token, "(define (f x) (+ x 2))")
 
@@ -36,8 +36,11 @@ class TestProcedureDefine(unittest.TestCase):
         #self.assertEqual(token, "(define a 5)")
         value = Value(Expression(token).getList())
         
-        result = eval.eval(value.getList())
-        print(result)
+        objList = value.getList()
+        eval.eval(objList)
+        env = eval.getStack()
+        print(env[0]["a"])
+        print(env[0]["f"])
             
         
 

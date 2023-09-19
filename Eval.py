@@ -274,8 +274,8 @@ class evaluate1:
             procedure_name  = item1[0]["name"]
             argumentList = item1[1:]
             body = item2
-            print(self.__stack__[0])
-            self.__stack__[-1][procedure_name] ={"arguments": argumentList, "body": body}
+            self.__stack__[-1][procedure_name] ={
+                "type":"Procedure","value":{"arguments": argumentList, "body": body}}
         else:
             self.__stack__[-1][item1['name']] = item2
 
