@@ -32,6 +32,8 @@ class TestLetStruct(unittest.TestCase):
         token = token_reader.getNext()
         exp = Expression(token)
         value = Value(exp.getList())
+        eval = evaluate1()
+        eval.eval(value.getList())
         """
         for it in value.getList():
             if isinstance(it, list):
@@ -44,7 +46,7 @@ class TestLetStruct(unittest.TestCase):
             else:
                 print(it)
         """
-        
+
        
 if __name__=="__main__":
     unittest.main()

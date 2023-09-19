@@ -199,6 +199,12 @@ class evaluate1:
         dfs(objList, out)
         return " ".join(out)
 
+
+    def doLet(self, variables, codes):
+        for it in variables:
+            for item in it:
+                print(item)
+
     def eval(self, objList: list[Object]):
         """
         for it in objList:
@@ -212,6 +218,8 @@ class evaluate1:
             if first["type"] =="keyword":
                 if first["name"] == "define":
                     self.defineVar(rest[0], rest[1])
+                elif first["name"] == "let":
+                    self.doLet(rest[0], rest[1])
             elif first["type"] =="op":
                 return self.op[first.name](rest)
         else:
