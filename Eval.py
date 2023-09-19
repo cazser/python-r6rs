@@ -268,7 +268,8 @@ class evaluate1:
             
     def defineVar(self, item1, item2):
         if isinstance(item1, list):
-            pass
+            procedure_name  = item1[0]["name"]
+            print(procedure_name)
         else:
             self.__stack__[-1][item1['name']] = item2
 
