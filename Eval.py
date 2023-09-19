@@ -201,9 +201,15 @@ class evaluate1:
 
 
     def doLet(self, variables, codes):
+        stack = self.getStack()
+        stack.append({})
         for it in variables:
-            for item in it:
-                print(item)
+            stack[-1][it[0]["name"]] = it[1]
+        eval1 = evaluate1(stack)
+
+        result = eval1.eval(codes)
+        stack.pop()
+        return result
 
     def eval(self, objList: list[Object]):
         """
@@ -219,7 +225,7 @@ class evaluate1:
                 if first["name"] == "define":
                     self.defineVar(rest[0], rest[1])
                 elif first["name"] == "let":
-                    self.doLet(rest[0], rest[1])
+                    return self.doLet(rest[0], rest[1])
             elif first["type"] =="op":
                 return self.op[first.name](rest)
         else:

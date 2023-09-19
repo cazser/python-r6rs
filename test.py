@@ -33,7 +33,7 @@ class TestLetStruct(unittest.TestCase):
         exp = Expression(token)
         value = Value(exp.getList())
         eval = evaluate1()
-        eval.eval(value.getList())
+        self.assertEqual(str( eval.eval(value.getList())), "{'type': 'Number', 'value': 12, 'name': '', 'str': '0'}")
         """
         for it in value.getList():
             if isinstance(it, list):
