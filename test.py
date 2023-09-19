@@ -36,27 +36,8 @@ class TestLetStruct(unittest.TestCase):
                 print(it)
         """
     
-    def testAdd(self):
-        token_reader = tokenReader("(define a 18) (define b 16) (+ a b)")
-        token = token_reader.getNext()
-        exp = Expression(token)
-        value = Value(exp.getList())
-        eval = evaluate1()
-        eval.eval(value.getList())
-
-        token = token_reader.getNext()
-        exp = Expression(token)
-        value = Value(exp.getList())
-        
-        eval.eval(value.getList())
-
-        token = token_reader.getNext()
-        exp = Expression(token)
-        value = Value(exp.getList())
-        
-        print(eval.eval(value.getList()))
-
-
+class TestIfElse(unittest.TestCase):
+    pass  
         
         
 

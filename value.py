@@ -12,7 +12,7 @@ class Object:
         self.type=None 
         self.value=None
         self.str=str 
-        keywords=["define", "let"]
+        keywords=["define", "let", "if"]
         if len(str)>0:
             if str in keywords:
                 self.type="keyword"
