@@ -38,9 +38,15 @@ class TestLetStruct(unittest.TestCase):
     
 class TestIfElse(unittest.TestCase):
     def testIfElseStructure(self):
-        token_reader = tokenReader("(if   (< 1 2) (+ 2 3) )")
+        token_reader = tokenReader("(if   (< 1 2) (+ 2 3))")
         token = token_reader.getNext()
         self.assertEqual(token, "(if (< 1 2) (+ 2 3))")
+        value = Value(Expression(token).getList())
+        objList = value.getList()
+        eval = evaluate1()
+        result =eval.eval(objList)
+        self.assertEqual(str(result), "{'type': 'Number', 'value': 5, 'name': '', 'str': '0'}")
+
 
         
         

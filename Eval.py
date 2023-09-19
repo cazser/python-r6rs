@@ -230,6 +230,12 @@ class evaluate1:
                     self.defineVar(rest[0], rest[1])
                 elif first["name"] == "let":
                     return self.doLet(rest[0], rest[1])
+                elif first["name"] == "if":
+                    condition = rest[0]
+                    conditionPass = self.eval(condition)
+                    if conditionPass.value==True:
+                        return self.eval(rest[1])
+
             elif first["type"] =="op":
                 return self.op[first.name](rest)
         else:
