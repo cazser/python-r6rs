@@ -220,7 +220,15 @@ class evaluate1:
         for it in objList:
             print(it)
         """
-            
+        
+        if objList[0]["type"]=="Identifier":
+            value1 =self.lookUp(objList[0]["name"])
+            stack= self.getStack()
+            rest={}
+            for it in value1["arguments"]:
+                print(it)
+            stack.pop()
+                    
         if len(objList)>1:
             first = objList[0]
             rest = objList[1:]
@@ -269,7 +277,10 @@ class evaluate1:
     def defineVar(self, item1, item2):
         if isinstance(item1, list):
             procedure_name  = item1[0]["name"]
-            print(procedure_name)
+            argumentList = item1[1:]
+            body = item2
+            print(self.__stack__[0])
+            self.__stack__[-1][procedure_name] ={"arguments": argumentList, "body": body}
         else:
             self.__stack__[-1][item1['name']] = item2
 
