@@ -2,6 +2,11 @@ class tokenReader:
     def __init__(self, str):
         self.str = str
         self.start = 0
+        while "  " in self.str:
+            self.str = self.str.replace("  ", " ")
+        
+        while "( (" in self.str:
+            self.str = self.str.replace("( (", "((")
 
     def getRest(self):
         return self.str[self.start: ]

@@ -38,9 +38,10 @@ class TestLetStruct(unittest.TestCase):
     
 class TestIfElse(unittest.TestCase):
     def testIfElseStructure(self):
-        token_reader = tokenReader("(if (< 1 2) (+ 2 3))")
+        token_reader = tokenReader("(if   (< 1 2) (+ 2 3) )")
         token = token_reader.getNext()
-        self.assertEqual(token, "")  
+        self.assertEqual(token, "(if (< 1 2) (+ 2 3))")
+
         
         
 
