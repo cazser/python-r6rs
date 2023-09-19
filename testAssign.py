@@ -17,6 +17,15 @@ class TestBackToCode(unittest.TestCase):
         eval.eval(value.getList())
         env = eval.getStack()
         print(env)
+        token = token_reader.getNext()
+        #self.assertEqual(token, "(define a 5)")
+
+        value = Value(Expression(token).getList())
+        #eval = evaluate1()
+        result =eval.eval(value.getList())
+        for  it in value.getList():
+            print(it)
+        print(result)
         
         
 

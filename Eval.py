@@ -241,6 +241,20 @@ class evaluate1:
                         else:
                             else_code = rest[2][1]
                             return self.eval(else_code)
+                elif first["name"]=="set!":
+                    value=None 
+                    if isinstance(rest[1], list):
+                        value = self.eval(rest[1])
+                    else:
+                        value = self.eval([rest[1]])
+
+                    name = rest[0].name
+                    found = False
+                    index=0
+                    while not found:
+                        if name in self.__stack__[-1 - index]:
+                            found = True
+                            self.__stack__[-1-index][name] = value
                             
 
             elif first["type"] =="op":
