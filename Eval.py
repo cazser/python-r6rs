@@ -262,6 +262,8 @@ class evaluate1:
 
             elif first["type"] =="op":
                 return self.op[first.name](rest)
+            elif self.eval([first])['type']=="Procedure":
+                print("function call")
         else:
             if objList[0]["type"] in ["Number", "Boolean"]:
                 return objList[0]

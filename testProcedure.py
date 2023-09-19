@@ -45,14 +45,22 @@ class TestProcedureDefine(unittest.TestCase):
         value = Value(Expression(token).getList())
         
         objList = value.getList()
-        print(eval.eval(objList))
+        eval.eval(objList)
 
         token = token_reader.getNext()
         
         value = Value(Expression(token).getList())
         
         objList = value.getList()
-        print(eval.eval(objList))
+        eval.eval(objList)
+
+        token = token_reader.getNext()
+        
+        value = Value(Expression(token).getList())
+        
+        objList = value.getList()
+        eval.eval(objList)
+
 
 
 
