@@ -8,7 +8,7 @@ from Expression import Expression
 
 class TestBackToCode(unittest.TestCase):
     def testBackToCode(self):
-        token_reader = tokenReader("(define a 5) (set! a 12)")
+        token_reader = tokenReader("(define a 5) (set! a 12) a")
         token = token_reader.getNext()
         self.assertEqual(token, "(define a 5)")
 
@@ -16,16 +16,21 @@ class TestBackToCode(unittest.TestCase):
         eval = evaluate1()
         eval.eval(value.getList())
         env = eval.getStack()
-        print(env)
+        #print(env)
         token = token_reader.getNext()
         #self.assertEqual(token, "(define a 5)")
 
         value = Value(Expression(token).getList())
         #eval = evaluate1()
         result =eval.eval(value.getList())
-        for  it in value.getList():
-            print(it)
-        print(result)
+        #print(result)
+        token = token_reader.getNext()
+        #self.assertEqual(token, "(define a 5)")
+
+        value = Value(Expression(token).getList())
+        #eval = evaluate1()
+        result =eval.eval(value.getList())
+        self.assertEqual(str( result), "{'type': 'Number', 'value': 12, 'name': '', 'str': '12'}")
         
         
 
