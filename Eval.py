@@ -24,6 +24,7 @@ class evaluate1:
             "not": self.doNot,
         }
     
+    
     def doNot(self, recvList):
         eval1 = evaluate1(self.__stack__)
         #for it in recvList:
@@ -221,13 +222,7 @@ class evaluate1:
             print(it)
         """
         
-        if objList[0]["type"]=="Identifier":
-            value1 =self.lookUp(objList[0]["name"])
-            stack= self.getStack()
-            rest={}
-            for it in value1["arguments"]:
-                print(it)
-            stack.pop()
+        
                     
         if len(objList)>1:
             first = objList[0]
