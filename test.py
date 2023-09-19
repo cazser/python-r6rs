@@ -46,6 +46,16 @@ class TestIfElse(unittest.TestCase):
         eval = evaluate1()
         result =eval.eval(objList)
         self.assertEqual(str(result), "{'type': 'Number', 'value': 5, 'name': '', 'str': '0'}")
+        token_reader = tokenReader("(if   (= 1 2) (+ 2 3) (else (* 8 9)))")
+        token = token_reader.getNext()
+        self.assertEqual(token, "(if (= 1 2) (+ 2 3) (else (* 8 9)))")
+        value = Value(Expression(token).getList())
+        objList = value.getList()
+        eval = evaluate1()
+        result =eval.eval(objList)
+        self.assertEqual(str(result), "{'type': 'Number', 'value': 72, 'name': '', 'str': '8'}")
+
+
 
 
         

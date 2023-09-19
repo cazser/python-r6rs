@@ -235,6 +235,13 @@ class evaluate1:
                     conditionPass = self.eval(condition)
                     if conditionPass.value==True:
                         return self.eval(rest[1])
+                    else:
+                        if len(rest)==2:
+                            return None 
+                        else:
+                            else_code = rest[2][1]
+                            return self.eval(else_code)
+                            
 
             elif first["type"] =="op":
                 return self.op[first.name](rest)
